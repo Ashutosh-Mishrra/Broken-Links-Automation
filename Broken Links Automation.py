@@ -6,6 +6,8 @@ __version__ = "1.0"
 __maintainer__ = "Ashutosh Mishra"
 __status__ = "Production"
 
+# importing libraries #
+
 import requests
 
 import os
@@ -19,13 +21,17 @@ import pandas as pd
 from datetime import datetime
 
  
+# getting directory path #
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
  
+# main class #
 
 class Checker:
 
+ # initializing empty lists and dictionaries #
+ 
     def __init__(self):
 
         self.input = []
@@ -33,6 +39,7 @@ class Checker:
         self.output = {'Link': [], 'Status': [],'Redirected_Links':[]}
 
  
+# reading input links from input file #
 
     def read_input(self,link_type):
 
@@ -58,8 +65,8 @@ class Checker:
 
         print('Reading',link_type,'Done')
 
+# main function code that determines links are broken or working #
  
-
     def crawler(self):
 
         count = 1
@@ -99,6 +106,7 @@ class Checker:
             count += 1
 
  
+# write output file fuction #
 
     def write_output(self,output_sheet,filename):
 
@@ -119,6 +127,7 @@ class Checker:
             self.output[key].clear()
 
  
+# main program starts from here #
 
 obj = Checker()
 
@@ -141,5 +150,4 @@ obj.write_output('Child_Links Status','Child')
 t2 = time.time()
 
 print(f'Completed,Total time taken: {(t2-t1)/60} mins')
-
  
